@@ -52,7 +52,7 @@ public final class GoalListAdapter extends ArrayAdapter<Goal> {
      * @return The new view with all content set.
      */
     @Override
-    public View getView(final int pos, View convertView, ViewGroup parent) {
+    public final View getView(final int pos, View convertView, ViewGroup parent) {
         LayoutInflater inflater =
                 (LayoutInflater) this.mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(this.mResourceId, null);

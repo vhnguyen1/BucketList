@@ -2,4 +2,10 @@
     <string name="app_name">Bucket List</string>
     <string name="clear_list_text">Clear List</string>
     <string name="add_new_goal_text">Add New Goal</string>
+    <string name="goal_details_image_description">Image of the specified goal</string>
+    <string name="edit_mode_check_box_text">Editable</string>
+    <string name="default_title_text">Goal Title</string>
+    <string name="default_date_text">Goal Date Written</string>
+    <string name="default_status_text">Goal Status</string>
+    <string name="default_description_text">Goal Description</string>
 </resources>

@@ -12,7 +12,7 @@ import android.hardware.SensorManager;
  * @author Vincent Nguyen
  * @version 1.0
  */
-public class ShakeDetector implements SensorEventListener {
+public final class ShakeDetector implements SensorEventListener {
     private long timeOfLastShake = 0;
     private OnShakeListener mShakeListener;
 
@@ -24,7 +24,7 @@ public class ShakeDetector implements SensorEventListener {
      * listener
      * @param listener The predefined shake listener
      */
-    public ShakeDetector(OnShakeListener listener) {
+    public ShakeDetector(final OnShakeListener listener) {
         mShakeListener = listener;
     }
 
@@ -37,25 +37,25 @@ public class ShakeDetector implements SensorEventListener {
     @Override
     public void onSensorChanged(final SensorEvent sensorEvent) {
         if (sensorEvent.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float x = sensorEvent.values[0];
-            float y = sensorEvent.values[1];
-            float z = sensorEvent.values[2];
+            final float X = sensorEvent.values[0];
+            final float Y = sensorEvent.values[1];
+            final float Z = sensorEvent.values[2];
 
             // Distance formula -> d = sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
             // Modified Distance Formula -> d = sqrt((x - gravity)^2 + (y - gravity)^2 + (z - gravity)^2)
-            float gForceX = x - SensorManager.GRAVITY_EARTH;
-            float gForceY = y - SensorManager.GRAVITY_EARTH;
-            float gForceZ = z - SensorManager.GRAVITY_EARTH;
+            final float G_FORCE_X = X - SensorManager.GRAVITY_EARTH;
+            final float G_FORCE_Y = Y - SensorManager.GRAVITY_EARTH;
+            final float G_FORCE_Z = Z - SensorManager.GRAVITY_EARTH;
 
-            double vector = Math.pow(gForceX, 2.0) + Math.pow(gForceY, 2.0)
-                    + Math.pow(gForceZ, 2.0);
+            final double VECTOR = Math.pow(G_FORCE_X, 2.0) + Math.pow(G_FORCE_Y, 2.0)
+                    + Math.pow(G_FORCE_Z, 2.0);
 
-            float gForce = (float) Math.sqrt(vector);
+            final float G_FORCE = (float) Math.sqrt(VECTOR);
 
-            if (gForce > SHAKE_THRESHOLD) {
-                long now = System.currentTimeMillis();
-                if (now - timeOfLastShake >= SHAKE_TIME_LAPSE) {
-                    timeOfLastShake = now;
+            if (G_FORCE > SHAKE_THRESHOLD) {
+                final long DURATION = System.currentTimeMillis();
+                if (DURATION - timeOfLastShake >= SHAKE_TIME_LAPSE) {
+                    timeOfLastShake = DURATION;
                     mShakeListener.onShake();
                 }
             }
@@ -68,7 +68,7 @@ public class ShakeDetector implements SensorEventListener {
      * @param i
      */
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {}
+    public void onAccuracyChanged(final Sensor sensor, final int i) {}
 
     /**
      * Custom interface for the other activities to call the onShake() method.

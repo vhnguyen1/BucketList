@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_goal_details"
     android:layout_width="match_parent"
@@ -9,5 +10,86 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.orangecoastcollege.cs273.vnguyen629.bucketlist.GoalDetailsActivity">
+
+    <CheckBox
+        android:text="@string/edit_mode_check_box_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:id="@+id/goalsDetailsEditModeCheckBox"
+        android:layout_toEndOf="@+id/goalDetailsImageView"
+        android:onClick="setEditableStatus" />
+
+    <ImageView
+        android:layout_width="200dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/goalDetailsImageView"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:contentDescription="@string/goal_details_image_description"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="changeGoalImage"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:text="@string/default_description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsDescriptionTextView"
+        android:textSize="18sp"
+        android:clickable="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsStatusTextView"
+        android:layout_alignStart="@+id/goalDetailsStatusTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/goalDetailsStatusTextView"
+        android:onClick="changeGoalEditTextText" />
+
+    <EditText
+        android:text="@string/default_status_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsStatusTextView"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:clickable="true"
+        android:layout_below="@+id/goalDetailsDateWrittenTextView"
+        android:layout_alignEnd="@+id/goalDetailsDateWrittenTextView"
+        android:onClick="changeGoalEditTextText" />
+
+    <EditText
+        android:text="@string/default_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsTitleTextView"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:clickable="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsImageView"
+        android:layout_centerHorizontal="true"
+        android:onClick="changeGoalEditTextText" />
+
+    <EditText
+        android:text="@string/default_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsDateWrittenTextView"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:clickable="true"
+        android:onClick="changeGoalEditTextText"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsTitleTextView"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

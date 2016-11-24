@@ -20,7 +20,10 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
+ * Loads up a list of all the <code>Goal</code> objects where the user can clear
+ * the list, add new <code>Goal</code> objects, or view specific ones in more detail
  *
+ * @author Vincent Nguyen
  */
 public class GoalListActivity extends AppCompatActivity {
     private DBHelper database;
@@ -34,7 +37,7 @@ public class GoalListActivity extends AppCompatActivity {
 
     /**
      *
-     * @param savedInstanceState
+     * @param savedInstanceState The current state of the activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,7 +85,7 @@ public class GoalListActivity extends AppCompatActivity {
 
     /**
      * When the user switches apps or clicks on the home button without closing the app,
-     * all the sensors that monitor device movments and g-forces are then paused
+     * all the sensors that monitor device movements and g-forces are then paused
      * to preserve battery life and RAM
      */
     @Override

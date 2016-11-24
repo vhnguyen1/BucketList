@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.orangecoastcollege.cs273.vnguyen629.bucketlist.AddNewGoalActivity">
+    tools:context="edu.orangecoastcollege.cs273.vnguyen629.bucketlist.AddNewGoalActivity"
+    android:focusableInTouchMode = "true">
 
 </RelativeLayout>

@@ -8,15 +8,19 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * Loads a splash screen the moment the user opens up the app before automatically
+ * moving onto the next page
  *
+ * @author Vincent Nguyen
  */
 public class SplashScreenActivity extends AppCompatActivity {
     private Timer splashTimer;
     private TimerTask splashTimerTask;
 
     /**
-     *
-     * @param savedInstanceState
+     * Loads up the timer for 3 total seconds before automatically moving
+     * to the GoalsListActivity page
+     * @param savedInstanceState The current state of the activity
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +29,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         splashTimerTask = new TimerTask() {
             /**
-             *
+             * Starts the activity for the GoalsListActivity page after finishing
+             * the 3 second countdown
              */
             @Override
             public void run() {

@@ -88,13 +88,13 @@ final class DBHelper extends SQLiteOpenHelper {
 
         final String TITLE = newGoal.getTitle();
         final String DESCRIPTION = newGoal.getDescription();
-        final String DATE_LOST = newGoal.getDateWritten();
+        final String DATE_WRITTEN = newGoal.getDateWritten();
         final String IMAGE_URI = newGoal.getGoalImageURI().toString();
         final int STATUS = ((newGoal.getStatus())? 1 : 0);
 
         values.put(FIELD_GOAL_TITLE, TITLE);
         values.put(FIELD_GOAL_DESCRIPTION, DESCRIPTION);
-        values.put(FIELD_GOAL_DATE_WRITTEN, DATE_LOST);
+        values.put(FIELD_GOAL_DATE_WRITTEN, DATE_WRITTEN);
         values.put(FIELD_GOAL_IMAGE_URI, IMAGE_URI);
         values.put(FIELD_GOAL_STATUS, STATUS);
 
@@ -177,13 +177,13 @@ final class DBHelper extends SQLiteOpenHelper {
 
         final String TITLE = goal.getTitle();
         final String DESCRIPTION = goal.getDescription();
-        final String DATE_LOST = goal.getDateWritten();
+        final String DATE_WRITTEN = goal.getDateWritten();
         final String IMAGE_URI = goal.getGoalImageURI().toString();
         final int STATUS = ((goal.getStatus())? 1 : 0);
 
         values.put(FIELD_GOAL_TITLE, TITLE);
         values.put(FIELD_GOAL_DESCRIPTION, DESCRIPTION);
-        values.put(FIELD_GOAL_DATE_WRITTEN, DATE_LOST);
+        values.put(FIELD_GOAL_DATE_WRITTEN, DATE_WRITTEN);
         values.put(FIELD_GOAL_IMAGE_URI, IMAGE_URI);
         values.put(FIELD_GOAL_STATUS, STATUS);
 
@@ -231,12 +231,12 @@ final class DBHelper extends SQLiteOpenHelper {
                 final int ID = Integer.parseInt(fields[0].replaceAll("\\s+",""));
                 final String TITLE = fields[1].trim();
                 final String DESCRIPTION = fields[2].trim();
-                final String DATE_LOST = fields[3].trim();
+                final String DATE_WRITTEN = fields[3].trim();
                 final Uri IMAGE_URI = Uri.parse(fields[5].replaceAll("\\s+",""));
                 final boolean STATUS = ((fields[5].replaceAll("\\s+","")
                         .equals("Found"))? true : false);
 
-                addGoal(new Goal(ID, TITLE, DESCRIPTION, DATE_LOST, IMAGE_URI, STATUS));
+                addGoal(new Goal(ID, TITLE, DESCRIPTION, DATE_WRITTEN, IMAGE_URI, STATUS));
             }
         } catch (final IOException ERR) {
             ERR.printStackTrace();

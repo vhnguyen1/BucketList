@@ -1,17 +1,23 @@
 package edu.orangecoastcollege.cs273.vnguyen629.bucketlist;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
+/**
+ *
+ */
 public class SplashScreenActivity extends AppCompatActivity {
     private Timer splashTimer;
     private TimerTask splashTimerTask;
 
+    /**
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

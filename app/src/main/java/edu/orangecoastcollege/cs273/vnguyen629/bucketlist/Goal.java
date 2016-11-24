@@ -33,7 +33,7 @@ public final class Goal implements Parcelable {
         this.mTitle = source.readString();
         this.mDescription = source.readString();
         this.mDateWritten = source.readString();
-        this.mCompleted = ((source.readString() == "Completed")? true : false);
+        this.mCompleted = ((source.readString().equals("Completed"))? true : false);
         this.mGoalImage = Uri.parse(source.readString());
     }
 
@@ -48,7 +48,7 @@ public final class Goal implements Parcelable {
      * @param imageURI The URI to get the image
      * @param status Whether or not the goal is completed
      */
-    private Goal(final int id, final String title, final String description,
+    public Goal(final int id, final String title, final String description,
                  final String dateWritten, final Uri imageURI, final boolean status) {
         this.mID = id;
         this.mTitle = title;
@@ -99,10 +99,10 @@ public final class Goal implements Parcelable {
      * Writes all of the <code>Goal</code> objects data into a parcelable cursor
      * object
      * @param parcel The parcelable cursor object to receive the data
-     * @param i
+     * @param flags
      */
     @Override
-    public final void writeToParcel(final Parcel parcel, final int i) {
+    public final void writeToParcel(final Parcel parcel, final int flags) {
         parcel.writeInt(this.mID);
         parcel.writeString(this.mTitle);
         parcel.writeString(this.mDescription);
@@ -155,7 +155,7 @@ public final class Goal implements Parcelable {
                 "Id=" + this.mID +
                 ", Title='" + this.mTitle + '\'' +
                 ", Description='" + this.mDescription + '\'' +
-                ", Date=" + this.mDateWritten +
+                ", Date=" + this.mDateWritten + '\'' +
                 ", mStatus=" + ((this.mCompleted)? "Found" : "Missing") +
                 '}';
     }

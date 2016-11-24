@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Bucket List</string>
+    <string name="clear_list_text">Clear List</string>
+    <string name="add_new_goal_text">Add New Goal</string>
 </resources>

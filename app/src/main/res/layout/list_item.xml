@@ -4,10 +4,10 @@
     android:layout_height="wrap_content"
     android:onClick="viewPetDetails"
     android:clickable="true"
-    android:id="@+id/itemListLinearLayout">
+    android:id="@+id/listLinearLayout">
 
     <ImageView
-        android:id="@+id/itemListImageView"
+        android:id="@+id/listImageView"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginRight="12dp"
@@ -19,21 +19,21 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/itemSlotLinearLayout">
+        android:id="@+id/listSlotLinearLayout">
 
         <TextView
             android:text="Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="24sp"
-            android:id="@+id/itemListNameTextView"
+            android:id="@+id/listTitleTextView"
             android:layout_margin="5dp" />
 
         <TextView
             android:text="Status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/itemListStatusTextView"
+            android:id="@+id/listDateWrittenTextView"
             android:layout_margin="5dp"
             android:textSize="18sp" />
     </LinearLayout>

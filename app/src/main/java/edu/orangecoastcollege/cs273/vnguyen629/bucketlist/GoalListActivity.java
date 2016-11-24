@@ -8,11 +8,19 @@ import android.support.annotation.AnyRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.List;
 
 /**
  *
  */
 public class GoalListActivity extends AppCompatActivity {
+    private DBHelper database;
+    private List<Goal> goalsList;
+    private GoalListAdapter goalsListAdapter;
+    private ListView goalsListView;
+
     /**
      *
      * @param savedInstanceState
@@ -21,6 +29,15 @@ public class GoalListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goal_list);
+
+        this.deleteDatabase(DBHelper.DATABASE_NAME);
+        database = new DBHelper(this);
+
+        goalsList = database.getAllGoals();
+        goalsListAdapter = new GoalListAdapter(this, R.layout.list_item, goalsList);
+
+        goalsListView = (ListView) findViewById(R.id.goalsListListView);
+        goalsListView.setAdapter(goalsListAdapter);
     }
 
     /**
@@ -31,7 +48,7 @@ public class GoalListActivity extends AppCompatActivity {
      * @return Uri to resource by given id
      * @throws Resources.NotFoundException If the given resource id does not exist.
      */
-    public static Uri getUriToResource(@NonNull Context context, @AnyRes final int resID)
+    public final static Uri getUriToResource(@NonNull Context context, @AnyRes final int resID)
             throws Resources.NotFoundException {
         /** Return a Resources instance for your application's package */
         Resources res = context.getResources();

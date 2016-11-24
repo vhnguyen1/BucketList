@@ -107,10 +107,10 @@ final class DBHelper extends SQLiteOpenHelper {
      * @return The list of all the <code>Goal</code> objects
      */
     public final ArrayList<Goal> getAllGoals() {
-        ArrayList<Goal> itemArrayList = new ArrayList<>();
+        ArrayList<Goal> goalsArrayList = new ArrayList<>();
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.query(
                 GOALS_TABLE,
                 new String[]{GOAL_KEY_FIELD_ID, FIELD_GOAL_TITLE, FIELD_GOAL_DESCRIPTION,
                         FIELD_GOAL_DATE_WRITTEN, FIELD_GOAL_IMAGE_URI, FIELD_GOAL_STATUS},
@@ -125,14 +125,14 @@ final class DBHelper extends SQLiteOpenHelper {
                 final Uri IMAGE_URI = Uri.parse(cursor.getString(4));
                 final boolean STATUS = ((cursor.getInt(5) == 1)? true : false);
 
-                itemArrayList.add(new Goal(ITEM_ID, TITLE, DESCRIPTION, DATE_WRITTEN,
+                goalsArrayList.add(new Goal(ITEM_ID, TITLE, DESCRIPTION, DATE_WRITTEN,
                         IMAGE_URI, STATUS));
 
             } while (cursor.moveToNext());
         }
 
-        db.close();
-        return itemArrayList;
+        DB.close();
+        return goalsArrayList;
     }
 
     /**
@@ -141,8 +141,8 @@ final class DBHelper extends SQLiteOpenHelper {
      * @return The <code>Goal</code> with the matching unique ID
      */
     public final Goal getGoal(final int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(
+        final SQLiteDatabase DB = this.getReadableDatabase();
+        Cursor cursor = DB.query(
                 GOALS_TABLE,
                 new String[]{GOAL_KEY_FIELD_ID, FIELD_GOAL_TITLE, FIELD_GOAL_DESCRIPTION,
                         FIELD_GOAL_DATE_WRITTEN, FIELD_GOAL_IMAGE_URI, FIELD_GOAL_STATUS},
@@ -163,7 +163,7 @@ final class DBHelper extends SQLiteOpenHelper {
         final Goal ITEM = new Goal(ITEM_ID, TITLE, DESCRIPTION, DATE_WRITTEN,
                 IMAGE_URI, STATUS);
 
-        db.close();
+        DB.close();
         return ITEM;
     }
 

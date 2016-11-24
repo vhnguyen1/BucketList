@@ -208,10 +208,6 @@ public final class Goal implements Parcelable {
         return this.mCompleted;
     }
 
-    /**
-     *
-     * @param id
-     */
     private final void setID(final int id) {
         this.mID = id;
     }

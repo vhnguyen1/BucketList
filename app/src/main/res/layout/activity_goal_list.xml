@@ -14,14 +14,14 @@
     <ImageView
         app:srcCompat="@mipmap/ic_launcher"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="70dp"
         android:id="@+id/goalsListImageView"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
         android:layout_height="150dp"
         android:layout_width="200dp"
-        android:clickable="true" />
+        android:clickable="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/add_new_goal_text"
@@ -30,7 +30,8 @@
         android:layout_marginTop="12dp"
         android:id="@+id/goalsListAddGoalButton"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="addGoal" />
 
     <Button
         android:text="@string/clear_list_text"
@@ -38,12 +39,14 @@
         android:id="@+id/goalsListClearButton"
         android:layout_height="wrap_content"
         android:layout_below="@+id/goalsListAddGoalButton"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:onClick="clearAllGoals" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/goalsListClearButton"
         android:layout_alignParentStart="true"
-        android:id="@+id/goalsListListView" />
+        android:id="@+id/goalsListListView"
+        android:clickable="true" />
 </RelativeLayout>

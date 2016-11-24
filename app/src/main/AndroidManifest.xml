@@ -15,7 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GoalListActivity"></activity>
+        <activity android:name=".GoalListActivity" />
+        <activity android:name=".GoalDetailsActivity" />
+        <activity android:name=".AddNewGoalActivity" />
+        <activity android:name=".SecretActivity"></activity>
     </application>
 
 </manifest>

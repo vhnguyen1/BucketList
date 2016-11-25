@@ -52,15 +52,15 @@ public final class GoalListAdapter extends ArrayAdapter<Goal> {
      * @return The new view with all content set.
      */
     @Override
-    public final View getView(final int pos, View convertView, ViewGroup parent) {
+    public final View getView(final int pos, final View convertView, final ViewGroup parent) {
         LayoutInflater inflater =
                 (LayoutInflater) this.mContext.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(this.mResourceId, null);
+        final View VIEW = inflater.inflate(this.mResourceId, null);
 
-        listLinearLayout = (LinearLayout) view.findViewById(R.id.listLinearLayout);
-        listImageView = (ImageView) view.findViewById(R.id.listImageView);
-        listTitleTextView = (TextView) view.findViewById(R.id.listTitleTextView);
-        listDateWrittenTextView = (TextView) view.findViewById(R.id.listDateWrittenTextView);
+        listLinearLayout = (LinearLayout) VIEW.findViewById(R.id.listLinearLayout);
+        listImageView = (ImageView) VIEW.findViewById(R.id.listImageView);
+        listTitleTextView = (TextView) VIEW.findViewById(R.id.listTitleTextView);
+        listDateWrittenTextView = (TextView) VIEW.findViewById(R.id.listDateWrittenTextView);
 
         final Goal GOAL = this.mGoalsList.get(pos);
         listLinearLayout.setTag(GOAL);
@@ -73,6 +73,6 @@ public final class GoalListAdapter extends ArrayAdapter<Goal> {
         listTitleTextView.setText(TITLE);
         listDateWrittenTextView.setText(DATE_LOST);
 
-        return view;
+        return VIEW;
     }
 }

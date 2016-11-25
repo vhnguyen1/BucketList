@@ -16,11 +16,100 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="8dp"
         android:id="@+id/goalsDetailsEditModeCheckBox"
-        android:layout_toEndOf="@+id/goalDetailsImageView"
-        android:onClick="setEditableStatus" />
+        android:onClick="setEditableStatus"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:text="@string/default_title_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsTitleTextView"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:clickable="false"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsImageView"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/goalDetailsImageView"
+        android:layout_alignStart="@+id/goalDetailsTitleTextView"
+        android:id="@+id/goalDetailsTitleEditText"
+        android:layout_alignEnd="@+id/goalDetailsDescriptionTextView"
+        android:onClick="changeGoalEditTextText"
+        android:focusableInTouchMode = "true"/>
+
+    <TextView
+        android:text="@string/default_date_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsDateWrittenTextView"
+        android:textSize="24sp"
+        android:gravity="center"
+        android:clickable="false"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsTitleTextView"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/goalDetailsDateWrittenEditText"
+        android:onClick="changeGoalEditTextText"
+        android:layout_below="@+id/goalDetailsTitleTextView"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/goalDetailsStatusTextView" />
+
+    <TextView
+        android:text="@string/default_status_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsStatusTextView"
+        android:textSize="36sp"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_below="@+id/goalDetailsDateWrittenTextView"
+        android:layout_alignEnd="@+id/goalDetailsDateWrittenTextView"
+        android:clickable="true"
+        android:onClick="changeGoalStatus" />
+
+    <TextView
+        android:text="@string/default_description_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/goalDetailsDescriptionTextView"
+        android:textSize="18sp"
+        android:clickable="false"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/goalDetailsStatusTextView"
+        android:layout_alignStart="@+id/goalDetailsStatusTextView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/goalDetailsStatusTextView" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/goalDetailsStatusTextView"
+        android:layout_alignStart="@+id/goalDetailsStatusTextView"
+        android:id="@+id/goalDetailsDescriptionEditText"
+        android:layout_alignEnd="@+id/goalDetailsStatusTextView"
+        android:layout_alignParentBottom="true"
+        android:onClick="changeGoalEditTextText" />
 
     <ImageView
         android:layout_width="200dp"
@@ -34,62 +123,6 @@
         android:clickable="true"
         android:onClick="changeGoalImage"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:text="@string/default_description_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/goalDetailsDescriptionTextView"
-        android:textSize="18sp"
-        android:clickable="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@+id/goalDetailsStatusTextView"
-        android:layout_alignStart="@+id/goalDetailsStatusTextView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/goalDetailsStatusTextView"
-        android:onClick="changeGoalEditTextText" />
-
-    <EditText
-        android:text="@string/default_status_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/goalDetailsStatusTextView"
-        android:textSize="36sp"
-        android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:clickable="true"
-        android:layout_below="@+id/goalDetailsDateWrittenTextView"
-        android:layout_alignEnd="@+id/goalDetailsDateWrittenTextView"
-        android:onClick="changeGoalEditTextText" />
-
-    <EditText
-        android:text="@string/default_title_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/goalDetailsTitleTextView"
-        android:textSize="36sp"
-        android:gravity="center"
-        android:clickable="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@+id/goalDetailsImageView"
-        android:layout_centerHorizontal="true"
-        android:onClick="changeGoalEditTextText" />
-
-    <EditText
-        android:text="@string/default_date_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/goalDetailsDateWrittenTextView"
-        android:textSize="24sp"
-        android:gravity="center"
-        android:clickable="true"
-        android:onClick="changeGoalEditTextText"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_below="@+id/goalDetailsTitleTextView"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

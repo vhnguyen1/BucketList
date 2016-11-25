@@ -20,7 +20,7 @@ public final class ShakeDetector implements SensorEventListener {
     private static final float SHAKE_THRESHOLD = 25.0f;
 
     /**
-     * Overloaded constructor that Creates a ShakeDetector object based off of a specified
+     * Overloaded constructor that creates a ShakeDetector object based off of a specified
      * listener
      * @param listener The predefined shake listener
      */

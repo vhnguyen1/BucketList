@@ -12,8 +12,11 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,6 +32,10 @@ public class GoalDetailsActivity extends AppCompatActivity {
     private TextView detailsDateWrittenTextView;
     private TextView detailsStatusTextView;
     private TextView detailsDescriptionTextView;
+
+    private EditText detailsTitleEditText;
+    private EditText detailsDateWrittenEditText;
+    private EditText detailsDescriptionEditText;
 
     private boolean editMode;
     private static final int REQUEST_CODE = 13;
@@ -67,6 +74,21 @@ public class GoalDetailsActivity extends AppCompatActivity {
         detailsDateWrittenTextView.setText(DATE_WRITTEN);
         detailsStatusTextView.setText(STATUS);
         detailsDescriptionTextView.setText(DESCRIPTION);
+
+        detailsTitleEditText = (EditText) findViewById(R.id.goalDetailsTitleEditText);
+        detailsTitleEditText.addTextChangedListener(goalDetailsTitleTextWatcher);
+        //detailsTitleEditText.setClickable(false);
+        //detailsTitleEditText.setFocusable(false);
+
+        detailsDateWrittenEditText = (EditText) findViewById(R.id.goalDetailsDateWrittenEditText);
+        detailsDateWrittenEditText.addTextChangedListener(goalDetailsDateWrittenTextWatcher);
+        //detailsDateWrittenEditText.setClickable(false);
+        //detailsDateWrittenEditText.setFocusable(false);
+
+        detailsDescriptionEditText = (EditText) findViewById(R.id.goalDetailsDescriptionEditText);
+        detailsDescriptionEditText.addTextChangedListener(goalDetailsDescriptionTextWatcher);
+        //detailsDescriptionEditText.setClickable(false);
+        //detailsDescriptionEditText.setFocusable(false);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -175,10 +197,129 @@ public class GoalDetailsActivity extends AppCompatActivity {
 
     /**
      *
+     */
+    public TextWatcher goalDetailsTitleTextWatcher = new TextWatcher() {
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void beforeTextChanged(final CharSequence charSequence, final int i,
+                                      final int i1, final int i2) {}
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void onTextChanged(final CharSequence charSequence, final int i,
+                                  final int i1, final int i2) {
+            final String INPUT = charSequence.toString().toLowerCase();
+            detailsTitleTextView.setText(INPUT);
+        }
+        /**
+         *
+         * @param editable
+         */
+        @Override
+        public void afterTextChanged(final Editable editable) {
+            detailsTitleEditText.setText("");
+        }
+    };
+
+    /**
+     *
+     */
+    public TextWatcher goalDetailsDateWrittenTextWatcher = new TextWatcher() {
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void beforeTextChanged(final CharSequence charSequence, final int i,
+                                      final int i1, final int i2) {}
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void onTextChanged(final CharSequence charSequence, final int i,
+                                  final int i1, final int i2) {
+            final String INPUT = charSequence.toString().toLowerCase();
+            detailsDateWrittenTextView.setText(INPUT);
+        }
+        /**
+         *
+         * @param editable
+         */
+        @Override
+        public void afterTextChanged(final Editable editable) {
+            detailsDateWrittenEditText.setText("");
+        }
+    };
+
+    /**
+     *
+     */
+    public TextWatcher goalDetailsDescriptionTextWatcher = new TextWatcher() {
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void beforeTextChanged(final CharSequence charSequence, final int i,
+                                      final int i1, final int i2) {}
+        /**
+         *
+         * @param charSequence
+         * @param i
+         * @param i1
+         * @param i2
+         */
+        @Override
+        public void onTextChanged(final CharSequence charSequence, final int i,
+                                  final int i1, final int i2) {
+            final String INPUT = charSequence.toString().toLowerCase();
+            detailsDescriptionTextView.setText(INPUT);
+        }
+        /**
+         *
+         * @param editable
+         */
+        @Override
+        public void afterTextChanged(final Editable editable) {
+            detailsDescriptionEditText.setText("");
+        }
+    };
+
+    /**
+     *
+     * @param view
+     */
+    public final void changeGoalStatus(View view) {
+        final String STATUS = detailsStatusTextView.getText().toString();
+        detailsStatusTextView.setText((STATUS.equals("Completed")? "Incomplete" : "Completed"));
+    }
+
+    /**
+     *
      * @param view
      */
     public final void changeGoalEditTextText(View view) {
-
     }
 
     /**
@@ -190,7 +331,42 @@ public class GoalDetailsActivity extends AppCompatActivity {
     public final void setEditableStatus(final View view) {
         if (view instanceof CheckBox) {
             final CheckBox SELECTED_CHECK_BOX = (CheckBox) view;
-            editMode = ((SELECTED_CHECK_BOX.isChecked())? true : false);
+            if (SELECTED_CHECK_BOX.isChecked()) {
+                editMode = true;
+
+                detailsImageView.setClickable(true);
+                detailsImageView.setFocusable(true);
+
+                detailsTitleEditText.setClickable(true);
+                detailsTitleEditText.setFocusable(true);
+
+                detailsDateWrittenEditText.setClickable(true);
+                detailsDateWrittenEditText.setFocusable(true);
+
+                detailsStatusTextView.setClickable(true);
+                detailsStatusTextView.setFocusable(true);
+
+                detailsDescriptionEditText.setClickable(true);
+                detailsDescriptionEditText.setFocusable(true);
+            }
+            else {
+                editMode = false;
+
+                detailsImageView.setClickable(false);
+                detailsImageView.setFocusable(false);
+
+                detailsTitleEditText.setClickable(false);
+                detailsTitleEditText.setFocusable(false);
+
+                detailsDateWrittenEditText.setClickable(false);
+                detailsDateWrittenEditText.setFocusable(false);
+
+                detailsStatusTextView.setClickable(false);
+                detailsStatusTextView.setFocusable(false);
+
+                detailsDescriptionEditText.setClickable(false);
+                detailsDescriptionEditText.setFocusable(false);
+            }
         }
     }
 }

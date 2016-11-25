@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.AnimationDrawable;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.net.Uri;
@@ -13,6 +14,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,9 +35,16 @@ public class GoalListActivity extends AppCompatActivity {
     private GoalListAdapter goalsListAdapter;
     private ListView goalsListView;
 
+    private AnimationDrawable frameAnim;
+    private Animation rotateAnim;
+    private Animation shakeAnim;
+    private AnimationDrawable customAnim;
+
     private Sensor accelerometer;
     private SensorManager sensorManager;
     private ShakeDetector shakeDetector;
+
+    private ImageView goalsListImageView;
 
     /**
      *
@@ -68,7 +79,6 @@ public class GoalListActivity extends AppCompatActivity {
         database.addGoal(new Goal("Example10", "Example10", "Example10",
                 getUriToResource(this, R.mipmap.ic_launcher), false));
 
-
         goalsList = database.getAllGoals();
         goalsListAdapter = new GoalListAdapter(this, R.layout.list_item, goalsList);
 
@@ -87,6 +97,8 @@ public class GoalListActivity extends AppCompatActivity {
                 startActivity(new Intent(GoalListActivity.this, SecretActivity.class));
             }
         });
+
+        goalsListImageView = (ImageView) findViewById(R.id.goalsListImageView);
     }
 
     /**
@@ -150,6 +162,69 @@ public class GoalListActivity extends AppCompatActivity {
         }
         else
             Toast.makeText(this, "Goals List is already empty.", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public final void toggleFrameAnim(final View view) {
+        // 1.) Programmatically set the background of the ImageView to @drawable/light1
+        goalsListImageView.setBackgroundResource(R.drawable.frame_anim);
+
+        // 2.) Associate the frameAnim with the animation in XML
+        frameAnim = (AnimationDrawable) goalsListImageView.getBackground();
+
+        // 3.) Start the frame animation if it isn't running and stop it if it already is
+        if (frameAnim.isRunning())
+            frameAnim.stop();
+        else
+            frameAnim.start();
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public final void toggleRotateAnim(final View view) {
+        if (rotateAnim != null && rotateAnim.hasStarted()) {
+            goalsListImageView.clearAnimation();
+            rotateAnim = null;
+        }
+        else {
+            rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_anim);
+            goalsListImageView.startAnimation(rotateAnim);
+        }
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public final void toggleShakeAnim(final View view) {
+        if (shakeAnim != null && shakeAnim.hasStarted()) {
+            goalsListImageView.clearAnimation();
+            shakeAnim = null;
+        }
+        else {
+            shakeAnim = AnimationUtils.loadAnimation(this, R.anim.shake_anim);
+            goalsListImageView.startAnimation(shakeAnim);
+        }
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public final void toggleGreyscale(final View view) {
+        goalsListImageView.setBackgroundResource(R.drawable.color_anim);
+
+        customAnim = (AnimationDrawable) goalsListImageView.getBackground();
+
+        if (customAnim.isRunning())
+            customAnim.stop();
+        else
+            customAnim.start();
     }
 
     /**

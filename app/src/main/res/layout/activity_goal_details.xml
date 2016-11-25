@@ -23,6 +23,20 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp" />
 
+    <ImageView
+        android:layout_width="200dp"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:id="@+id/goalDetailsImageView"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:contentDescription="@string/goal_details_image_description"
+        android:scaleType="fitCenter"
+        android:clickable="true"
+        android:onClick="changeGoalImage"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:text="@string/default_title_text"
         android:layout_width="match_parent"
@@ -38,15 +52,16 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_below="@+id/goalDetailsImageView"
-        android:layout_alignStart="@+id/goalDetailsTitleTextView"
         android:id="@+id/goalDetailsTitleEditText"
-        android:layout_alignEnd="@+id/goalDetailsDescriptionTextView"
         android:onClick="changeGoalEditTextText"
-        android:focusableInTouchMode = "true"/>
+        android:focusableInTouchMode = "true"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/goalDetailsImageView"
+        android:layout_alignParentStart="true"
+        android:layout_height="45dp"
+        android:gravity="center_vertical|center" />
 
     <TextView
         android:text="@string/default_date_text"
@@ -68,9 +83,10 @@
         android:ems="10"
         android:id="@+id/goalDetailsDateWrittenEditText"
         android:onClick="changeGoalEditTextText"
+        android:background="@android:color/transparent"
         android:layout_below="@+id/goalDetailsTitleTextView"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/goalDetailsStatusTextView" />
+        android:gravity="center" />
 
     <TextView
         android:text="@string/default_status_text"
@@ -80,10 +96,10 @@
         android:textSize="36sp"
         android:gravity="center"
         android:layout_marginLeft="5dp"
-        android:layout_below="@+id/goalDetailsDateWrittenTextView"
-        android:layout_alignEnd="@+id/goalDetailsDateWrittenTextView"
         android:clickable="true"
-        android:onClick="changeGoalStatus" />
+        android:onClick="changeGoalStatus"
+        android:layout_below="@+id/goalDetailsDateWrittenTextView"
+        android:layout_alignStart="@+id/goalDetailsDateWrittenTextView" />
 
     <TextView
         android:text="@string/default_description_text"
@@ -109,20 +125,8 @@
         android:id="@+id/goalDetailsDescriptionEditText"
         android:layout_alignEnd="@+id/goalDetailsStatusTextView"
         android:layout_alignParentBottom="true"
-        android:onClick="changeGoalEditTextText" />
-
-    <ImageView
-        android:layout_width="200dp"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/goalDetailsImageView"
-        android:layout_height="200dp"
-        android:adjustViewBounds="true"
-        android:cropToPadding="true"
-        android:contentDescription="@string/goal_details_image_description"
-        android:scaleType="fitCenter"
-        android:clickable="true"
-        android:onClick="changeGoalImage"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:onClick="changeGoalEditTextText"
+        android:background="@android:color/transparent"
+        android:gravity="top|left" />
 
 </RelativeLayout>

@@ -51,6 +51,23 @@ public class GoalListActivity extends AppCompatActivity {
                 getUriToResource(this, R.mipmap.ic_launcher), false));
         database.addGoal(new Goal("Example2", "Example2", "Example2",
                 getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example3", "Example3", "Example3",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example4", "Example4", "Example4",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example5", "Example5", "Example5",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example6", "Example6", "Example6",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example7", "Example7", "Example7",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example8", "Example8", "Example8",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example9", "Example9", "Example9",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+        database.addGoal(new Goal("Example10", "Example10", "Example10",
+                getUriToResource(this, R.mipmap.ic_launcher), false));
+
 
         goalsList = database.getAllGoals();
         goalsListAdapter = new GoalListAdapter(this, R.layout.list_item, goalsList);
